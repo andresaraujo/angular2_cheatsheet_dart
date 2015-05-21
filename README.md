@@ -1,5 +1,19 @@
 ## A WIP Angular 2 cheatsheet for dart (alpha 24)
 
+**Bootstrap angular**
+```dart
+import 'package:angular2/angular2.dart';
+main() => bootstrap(MyApp); //MyApp is a component
+```
+
+**Bootstrap angular with default router**
+```dart
+import 'package:angular2/angular2.dart';
+import 'package:angular2/router.dart';
+main() => bootstrap(MyApp, routerInjectables);
+```
+
+
 ### Components
 
 ```dart
