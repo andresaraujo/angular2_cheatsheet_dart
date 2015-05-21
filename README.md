@@ -23,7 +23,7 @@ class MyComponent {}
 ```
 #### @View
 
-**directives**: Specifies a list of directives that can be used within a template.
+**directives**: Specifies a list of directives that can be used within a template. *Its optional*
 
 **Add Angular core directives (NgFor, NgIf, NgNonBindable, NgSwitch, NgSwitchWhen, NgSwitchDefault)**
 ```dart
@@ -95,7 +95,7 @@ class MyComponent {
 }
 ```
 
-**properties**: The `properties` property defines a set of `directiveProperty` to `bindingProperty`  key-value pairs:
+**properties**: The `properties` property defines a set of `directiveProperty` to `bindingProperty`  key-value pairs. *Its optional*
    - `directiveProperty` specifies the component property where the value is written.
    - `bindingProperty` specifies the DOM property where the value is read from.
 
