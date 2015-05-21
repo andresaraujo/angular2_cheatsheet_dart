@@ -23,6 +23,27 @@ class MyComponent {}
 ```
 #### @View
 
+**template**: replace the current element with the contents of the
+HTML string.
+```dart
+//<my-banner></my-banner>
+@Component(selector: 'my-banner')
+@View(template: '<div class="banner">...</div>')
+class MyBanner {}
+```
+
+**templateUrl**: replace the current element with the contents loaded by the specified URL
+```dart
+//<my-banner></my-banner>
+@Component(selector: 'my-banner')
+@View(templateUrl: 'my-banner.html')
+class MyBanner {}
+```
+```html
+<!-- my-banner.html -->
+<div class="banner">...</div>
+```
+
 **directives**: Specifies a list of directives that can be used within a template. *Its optional*
 
 **Add Angular core directives (NgFor, NgIf, NgNonBindable, NgSwitch, NgSwitchWhen, NgSwitchDefault)**
