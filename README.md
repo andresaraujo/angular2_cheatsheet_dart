@@ -1,4 +1,4 @@
-## A WIP Angular 2 cheatsheet for dart (alpha 24)
+## A WIP Angular 2 cheatsheet for dart (alpha 26)
 
 **Bootstrap angular**
 ```dart
@@ -125,10 +125,10 @@ class MyComponent {
 //<my-component my-name="Hodor" my-desc="hooodor?"></my-component>
 @Component(
     selector: 'my-component', 
-    properties: const {
-        'name': 'my-name',// -> set name(name)
-        'desc': 'my-desc'
-})
+    properties: const [
+        'name: my-name',// -> set name(name)
+        'desc: my-desc'
+])
 @View(templateUrl: "my-component.html")
 class MyComponent {
     String _name;
