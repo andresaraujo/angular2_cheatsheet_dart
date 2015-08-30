@@ -1,4 +1,4 @@
-## A WIP Angular 2 cheatsheet for dart (alpha 26)
+## A WIP Angular 2 cheatsheet for dart (alpha 35)
 
 **Bootstrap angular**
 ```dart
@@ -8,16 +8,24 @@ main() => bootstrap(MyApp); //MyApp is a component
 
 **Bootstrap angular with default router**
 ```dart
-import 'package:angular2/angular2.dart';
-import 'package:angular2/router.dart';
-main() => bootstrap(MyApp, routerInjectables);
+import 'package:angular2/angular2.dart' show bind;
+import 'package:angular2/bootstrap.dart' show bootstrap;
+import 'package:angular2/router.dart' show APP_BASE_HREF, HashLocationStrategy, LocationStrategy, routerInjectables;
+
+main() {
+  bootstrap(App, [
+    routerInjectables,
+    bind(APP_BASE_HREF).toValue('/'),
+    // bind(LocationStrategy).toClass(HashLocationStrategy) // if you want to use #
+  ]);
+}
 ```
 
 
 ### Components
 
 ```dart
-@Component(selector: 'selector-name', appInjector: const [injectables])
+@Component(selector: 'selector-name', viewBindings: const [injectables])
 @View(templateUrl: "home.html", directives: const [directives])
 class MyComponent {}
 ```
@@ -36,7 +44,7 @@ class MyBanner {}
 ```dart
 //<my-banner></my-banner>
 @Component(selector: 'my-banner')
-@View(templateUrl: 'my-banner.html')
+@View(templateUrl: 'package:mypackage/my-banner.html')
 class MyBanner {}
 ```
 ```html
@@ -49,7 +57,7 @@ class MyBanner {}
 **Add Angular core directives (NgFor, NgIf, NgNonBindable, NgSwitch, NgSwitchWhen, NgSwitchDefault)**
 ```dart
 @Component(selector: 'my-component')
-@View(templateUrl: "my-component.html", directives: const [coreDirectives])
+@View(templateUrl: "my-component.html", directives: const [CORE_DIRECTIVES])
 class MyComponent {}
 ```
 
@@ -86,14 +94,14 @@ class MyComponent {}
 class MyComponent {}
 
 //<div my-component></div>
-@Decorator(selector: '[my-component]')
+@Directive(selector: '[my-component]')
 @View(templateUrl: "my-component.html")
 class MyComponent {}
 ```
 
 **Inject dependencies into a component**
 ```dart
-@Injectable //Needed for Angular tranformer
+@Injectable() //Needed for Angular transformer
 class MyService {}
 
 @Component(selector: 'selector-name', appInjector: const [MyService])
@@ -106,12 +114,15 @@ class MyComponent {
 **Accesing host DOM element in a component/decorator**
 
 ```dart
+import 'dart:html' as dom;
+import 'package:angular2/angular2.dart' show Directive, ElementRef;
+
 //<div selector-name></div>
-@Decorator(selector: '[selector-name]')
+@Directive(selector: '[selector-name]')
 class MyComponent {
     dom.Element element;
     MyComponent(ElementRef ref) {
-        element =  ref.domElement;
+        element =  ref.nativeElement;
     }
 }
 ```
