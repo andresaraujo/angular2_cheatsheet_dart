@@ -1,8 +1,8 @@
-## A WIP Angular 2 cheatsheet for dart (alpha 35)
+## A WIP Angular 2 cheatsheet for dart (alpha 36)
 
 **Bootstrap angular**
 ```dart
-import 'package:angular2/angular2.dart';
+import 'package:angular2/bootstrap.dart' show bootstrap;
 main() => bootstrap(MyApp); //MyApp is a component
 ```
 
@@ -10,11 +10,11 @@ main() => bootstrap(MyApp); //MyApp is a component
 ```dart
 import 'package:angular2/angular2.dart' show bind;
 import 'package:angular2/bootstrap.dart' show bootstrap;
-import 'package:angular2/router.dart' show APP_BASE_HREF, HashLocationStrategy, LocationStrategy, routerInjectables;
+import 'package:angular2/router.dart' show APP_BASE_HREF, HashLocationStrategy, LocationStrategy, ROUTER_BINDINGS;
 
 main() {
   bootstrap(App, [
-    routerInjectables,
+    ROUTER_BINDINGS,
     bind(APP_BASE_HREF).toValue('/'),
     // bind(LocationStrategy).toClass(HashLocationStrategy) // if you want to use #
   ]);
